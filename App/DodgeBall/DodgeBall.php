@@ -4,7 +4,7 @@ ini_set('memory_limit', '256M');
 
 require_once '../../vendor/autoload.php';
 
-use App\DodgeBall\Components\Lives;
+use App\DodgeBall\Components\PlayerLives;
 use App\DodgeBall\Components\Player;
 use App\DodgeBall\Components\ScoreKeeper;
 use App\DodgeBall\Components\Team;
@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 class DodgeBall extends TestCase {
 
     public function testPlayerID() {
-        $lives = new Lives();
+        $lives = new PlayerLives();
         $player = new Player(1, $lives);
         $this->assertEquals(1, $player->getIdentifier());
     }
@@ -22,8 +22,8 @@ class DodgeBall extends TestCase {
     public function testPlayerOneThrowingBallToPlayerTwo() {
         $startWithLives = 3;
 
-        $playerOneLives = new Lives($startWithLives);
-        $playerTwoLives = new Lives($startWithLives);
+        $playerOneLives = new PlayerLives($startWithLives);
+        $playerTwoLives = new PlayerLives($startWithLives);
 
         $playerOne = new Player(1, $playerOneLives);
         $playerTwo = new Player(2, $playerTwoLives);
@@ -36,8 +36,8 @@ class DodgeBall extends TestCase {
     public function testAssertPlayerIncorrectlyLivesAfterBeingHitOnce() {
         $startWithLives = 3;
 
-        $playerOneLives = new Lives($startWithLives);
-        $playerTwoLives = new Lives($startWithLives);
+        $playerOneLives = new PlayerLives($startWithLives);
+        $playerTwoLives = new PlayerLives($startWithLives);
 
         $playerOne = new Player(1, $playerOneLives);
         $playerTwo = new Player(2, $playerTwoLives);
@@ -50,8 +50,8 @@ class DodgeBall extends TestCase {
     public function testPlayerWereAllLivesHaveBeenDepleted() {
         $startWithLives = 2;
 
-        $playerOneLives = new Lives($startWithLives);
-        $playerTwoLives = new Lives($startWithLives);
+        $playerOneLives = new PlayerLives($startWithLives);
+        $playerTwoLives = new PlayerLives($startWithLives);
 
         $playerOne = new Player(1, $playerOneLives);
         $playerTwo = new Player(2, $playerTwoLives);
@@ -66,8 +66,8 @@ class DodgeBall extends TestCase {
 
         $startWithLives = 3;
 
-        $playerOneLives = new Lives($startWithLives);
-        $playerTwoLives = new Lives($startWithLives);
+        $playerOneLives = new PlayerLives($startWithLives);
+        $playerTwoLives = new PlayerLives($startWithLives);
 
         $playerOne = new Player(1, $playerOneLives);
         $playerTwo = new Player(1, $playerTwoLives);
@@ -89,8 +89,8 @@ class DodgeBall extends TestCase {
     public function testLivesLeftAfterBeingHit() {
         $startWithLives = 1;
 
-        $playerOneLives = new Lives($startWithLives);
-        $playerTwoLives = new Lives($startWithLives);
+        $playerOneLives = new PlayerLives($startWithLives);
+        $playerTwoLives = new PlayerLives($startWithLives);
 
         $playerOne = new Player(1, $playerOneLives);
         $playerTwo = new Player(1, $playerTwoLives);
@@ -114,8 +114,8 @@ class DodgeBall extends TestCase {
     public function testIfPlayerGotRemovedFromTeamIfHeGotZeroLivesLeft() {
         $startWithLives = 2;
 
-        $playerOneLives = new Lives($startWithLives);
-        $playerTwoLives = new Lives($startWithLives);
+        $playerOneLives = new PlayerLives($startWithLives);
+        $playerTwoLives = new PlayerLives($startWithLives);
 
         $playerOne = new Player(1, $playerOneLives);
         $playerTwo = new Player(1, $playerTwoLives);
@@ -141,8 +141,8 @@ class DodgeBall extends TestCase {
     public function testWinningTeamIfThereIsNoPlayerLeft() {
         $startWithLives = 2;
 
-        $playerOneLives = new Lives($startWithLives);
-        $playerTwoLives = new Lives($startWithLives);
+        $playerOneLives = new PlayerLives($startWithLives);
+        $playerTwoLives = new PlayerLives($startWithLives);
 
         $playerOne = new Player(1, $playerOneLives);
         $playerTwo = new Player(1, $playerTwoLives);
@@ -171,8 +171,8 @@ class DodgeBall extends TestCase {
     public function testToDetermineWinningTeamWithMostLivesLeftOnSuddenEndingMatch() {
         $startWithLives = 3;
 
-        $playerOneLives = new Lives($startWithLives);
-        $playerTwoLives = new Lives($startWithLives);
+        $playerOneLives = new PlayerLives($startWithLives);
+        $playerTwoLives = new PlayerLives($startWithLives);
 
         $playerOne = new Player(uniqid(true), $playerOneLives);
         $playerTwo = new Player(uniqid(true), $playerTwoLives);
@@ -207,8 +207,8 @@ class DodgeBall extends TestCase {
         $this->expectExceptionMessage('does not exists in team');
         $startWithLives = 3;
 
-        $playerOneLives = new Lives($startWithLives);
-        $playerTwoLives = new Lives($startWithLives);
+        $playerOneLives = new PlayerLives($startWithLives);
+        $playerTwoLives = new PlayerLives($startWithLives);
 
         $playerOne = new Player(uniqid(true), $playerOneLives);
         $playerTwo = new Player(uniqid(true), $playerTwoLives);

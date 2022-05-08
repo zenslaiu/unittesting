@@ -14,15 +14,15 @@ class Player
     private string $id;
 
     /**
-     * @var Lives
+     * @var PlayerLives
      */
-    private Lives $lives;
+    private PlayerLives $lives;
 
     /**
      * @param int $id
-     * @param Lives $lives
+     * @param PlayerLives $lives
      */
-    public function __construct(string $id, Lives $lives)
+    public function __construct(string $id, PlayerLives $lives)
     {
         $this->id = $id;
         $this->lives = $lives;

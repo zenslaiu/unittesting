@@ -5,7 +5,7 @@ namespace App\DodgeBall\Components;
 /**
  *
  */
-class Lives
+class PlayerLives
 {
     /**
      * @var int
